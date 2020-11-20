@@ -17,8 +17,8 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
 public class User {
+
     private Integer id;
 
     private String tel;
@@ -27,10 +27,6 @@ public class User {
 
     private String username;
 
-    private String label;
-
-    private String portrait;
-
     private String type;
 
     private Timestamp create_time;
@@ -38,6 +34,8 @@ public class User {
     private Integer gender;
 
     private Integer age;
+
+    private String signature;
 
     /**
      * entity内不做参数校验；

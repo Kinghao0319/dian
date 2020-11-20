@@ -1,1 +1,20 @@
+server:
+  port: 8113
+#  ssl:
+#    key-store: classpath:4613066_www.oakleaf.cn.pfx
+#    key-store-password: 9dtJAKje
+#    key-store-type: PKCS12
 
+
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://101.37.78.56:3305/dian?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root

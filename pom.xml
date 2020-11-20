@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.kinghao</groupId>
-    <artifactId>budai</artifactId>
+    <artifactId>dian</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>budai</name>
-    <description>budai project for Spring Boot</description>
+    <name>dian</name>
+    <description>dian project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -124,6 +124,12 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.7</version>
+        </dependency>
+        <!-- 美化API-UI-->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+            <version>1.9.6</version>
         </dependency>
 
     </dependencies>

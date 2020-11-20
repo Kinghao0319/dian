@@ -33,7 +33,7 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("API Documentation")
+                .title("Dian API Documentation")
                 .description("接口文档")
                 //.termsOfServiceUrl("http://localhost:8080/swagger-ui.html")//数据源
                 .version("1.0")

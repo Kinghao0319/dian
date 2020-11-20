@@ -24,6 +24,7 @@ public enum CommonErrorCode {
     PARAMS_INVALID(1010,"存在有误的参数","请重试"),
     UNSIGNED_USER(1011,"未注册用户","请前往注册"),
     INVALID_PHONE(1012,"无效手机号","请输入正确的手机号"),
+    USERNAME_USED_ERROR(1013,"用户名已注册","请前往登录")
 
     ;
 
