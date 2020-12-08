@@ -18,3 +18,13 @@ spring:
     url: jdbc:mysql://101.37.78.56:3305/dian?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     password: root
+  data:
+#    mongodb:
+#      host: 101.37.78.56
+#      port: 27017
+#      database: test    #指定操作的数据库
+    mongodb:
+      uri: mongodb://101.37.78.56:27017/test?maxpoolsize=10&minpoolsize=1&maxidletimems=600000&maxlifetimems=1800000
+#      username: admin
+#      password: 123456
+#      uri: mongodb://admin@101.37.78.56:27017/?authSource=admin
