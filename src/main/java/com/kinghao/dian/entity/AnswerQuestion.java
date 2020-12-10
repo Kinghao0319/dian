@@ -35,6 +35,7 @@ class AqSingleChoice extends AnswerQuestion {
 
 class AqMultipleChoice extends AnswerQuestion {
     private String[] answer;
+
 }
 
 class AqShortAnswers extends AnswerQuestion {

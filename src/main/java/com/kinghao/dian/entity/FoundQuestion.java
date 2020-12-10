@@ -34,8 +34,9 @@ public class FoundQuestion {
     private String found_questionnnaire_id;
     private String found_questionnnaire_title;
     private boolean mustAnswered;
-    private boolean isFool;
+    private boolean isfool;
     private boolean isDerived;
+
 
 }
 class SingleChoice extends FoundQuestion {
