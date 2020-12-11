@@ -42,12 +42,28 @@ public class QuestionController {
 
         MongoClient monGoClient=new MongoClient(new ServerAddress("101.37.78.56",27017),option);
         //获取操作数据库
-        MongoDatabase db=monGoClient.getDatabase("test");
+        MongoDatabase db=monGoClient.getDatabase("Project");
         //获取集合。后面的操作，大部分都是基于集合操作
-        MongoCollection<Document> collection=db.getCollection("question");
+        MongoCollection<Document> collection=db.getCollection("found_question");
 
         collection.insertOne(BsonUtil.toDocument(question));
         System.out.println("019");
         return "Add successfully!";
+    }
+
+    @ApiOperation(value = "删除问题")
+    @PostMapping("/delete")
+    public Object delete(@Valid Question question){
+        MongoClientOptions option=MongoClientOptions.builder().connectTimeout(60000).build();
+
+        MongoClient monGoClient=new MongoClient(new ServerAddress("101.37.78.56",27017),option);
+        //获取操作数据库
+        MongoDatabase db=monGoClient.getDatabase("Project");
+        //获取集合。后面的操作，大部分都是基于集合操作
+        MongoCollection<Document> collection=db.getCollection("found_question");
+
+        collection.deleteOne(BsonUtil.toDocument(question));
+        System.out.println("020");
+        return "Delete successfully!";
     }
 }
