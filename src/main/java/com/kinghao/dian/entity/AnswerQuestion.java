@@ -23,6 +23,7 @@ import java.util.Map;
 public class AnswerQuestion {
     @Id
     private String Id;
+    private String title;
     private String answer_questionnnaire_id;
     private String answer_questionnnaire_title;
     private Integer answer_user_id;

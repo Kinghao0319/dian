@@ -30,7 +30,7 @@ import javax.validation.Valid;
 public class AnswerQuestionnaireController {
     @ApiOperation(value = "显示待答问卷")
     @GetMapping("/show")
-    public Object show(@Valid User user){
+    public Object show(@Valid FoundQuestionnaire questionnaire){
         MongoClientOptions option=MongoClientOptions.builder().connectTimeout(60000).build();
 
         MongoClient monGoClient=new MongoClient(new ServerAddress("101.37.78.56",27017),option);
@@ -39,7 +39,7 @@ public class AnswerQuestionnaireController {
         //获取集合。后面的操作，大部分都是基于集合操作
         MongoCollection<Document> collection=db.getCollection("found_questionnaire");
 
-        FindIterable<Document> result=collection.find().filter(Filters.eq("targetGroup",user.getType())).iterator();
+        MongoCursor result=collection.find().filter(Filters.eq("",).iterator();//这里我想写一个目标人群为userid的
 //        while(result4.hasNext()) {
 //            System.out.println(result4.next());
 //        }
@@ -49,7 +49,7 @@ public class AnswerQuestionnaireController {
 
     @ApiOperation(value = "显示已作答答问卷")
     @GetMapping("/showans")
-    public Object show(@Valid User user){
+    public Object show(@Valid AnswerQuestionnaire questionnaire){
         MongoClientOptions option=MongoClientOptions.builder().connectTimeout(60000).build();
 
         MongoClient monGoClient=new MongoClient(new ServerAddress("101.37.78.56",27017),option);
@@ -91,7 +91,7 @@ public class AnswerQuestionnaireController {
         //获取操作数据库
         MongoDatabase db=monGoClient.getDatabase("Project");
         //获取集合。后面的操作，大部分都是基于集合操作
-        MongoCollection<Document> collection=db.getCollection("found_question");
+        MongoCollection<Document> collection=db.getCollection("answer_questionnaire");
 
         collection.deleteOne(BsonUtil.toDocument(questionnaire));
         System.out.println("020");
