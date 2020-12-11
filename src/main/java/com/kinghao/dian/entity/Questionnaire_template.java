@@ -18,13 +18,13 @@ import javax.persistence.Table;
 @Table(name = "questionnaire_template")
 public class Questionnaire_template {
     @Id
-    private String id;
+    private Integer id;
     private String title;
     private String content;
     private String description;
     private String targetGroup;
     private String type;
-    private Integer difficulty;
+    private String difficulty;
     private Integer upload_point;
     private Integer download_point;
     private Integer popularity;

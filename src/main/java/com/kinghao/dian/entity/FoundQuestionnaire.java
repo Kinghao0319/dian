@@ -28,7 +28,7 @@ import java.util.List;
 @Table(name = "found_questionnaire")
 public class FoundQuestionnaire {
     @Id
-    private String id;
+    private Integer id;
     private String title;
     private String description;
     private String content;
@@ -36,10 +36,9 @@ public class FoundQuestionnaire {
     private String type;
     private Date startTime;
     private Date endTime;
-    private Integer difficulty;
+    private String difficulty;
     private Integer foundPoint;
     private Integer answerPoint;
-    private String founder_id;
+    private Integer founder_id;
     private Integer is_from_template;
-    private List<FoundQuestion> questions;
 }

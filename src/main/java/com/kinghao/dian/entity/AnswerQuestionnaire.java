@@ -20,7 +20,7 @@ import java.util.List;
 @Table(name = "answer_questionnaire")
 public class AnswerQuestionnaire {
     @Id
-    private String id;
+    private Integer id;
     private String title;
     private String fq_id;
     private Date startTime;
@@ -28,8 +28,8 @@ public class AnswerQuestionnaire {
     private String sourceIP;
     private String area;
     private String state;
-    private String founder_id;
-    private String filler_id;
+    private Integer founder_id;
+    private Integer filler_id;
     private Integer candidate;
-    private List<AnswerQuestion> answer;
+    private String content;
 }
