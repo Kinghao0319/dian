@@ -3,7 +3,7 @@ package com.kinghao.dian.controller;
 import com.github.pagehelper.PageInfo;
 import com.kinghao.dian.annotation.Auth;
 import com.kinghao.dian.annotation.ReSubmit;
-import com.kinghao.dian.dto.request.AddFqRequest;
+import com.kinghao.dian.dto.request.AddQuestionnaireRequest;
 import com.kinghao.dian.dto.request.ExampleRequest;
 import com.kinghao.dian.enums.UserType;
 import com.kinghao.dian.service.ExampleService;
@@ -39,7 +39,7 @@ public class ExampleController {
 
     @PostMapping("/testMongoDB")
     @ApiOperation(value = "测试MongoDB")
-    public Object testMongoDB(AddFqRequest addFqRequest){
+    public Object testMongoDB(AddQuestionnaireRequest addFqRequest){
         System.out.println("111");
         TestMongodbService testMongodbService=new TestMongodbService();
         System.out.println("222");

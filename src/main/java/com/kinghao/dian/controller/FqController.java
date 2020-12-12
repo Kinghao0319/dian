@@ -1,16 +1,9 @@
 package com.kinghao.dian.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import com.kinghao.dian.dto.request.AddFqRequest;
+import com.kinghao.dian.dto.request.AddQuestionnaireRequest;
 import com.kinghao.dian.service.FqService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -19,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.sql.Timestamp;
 
 /**
  * @Author Kinghao
@@ -39,7 +31,7 @@ public class FqController {
 
     @ApiOperation(value = "创建问卷")
     @PostMapping("/addFq")
-    public Object addFq(@Valid AddFqRequest addFqRequest){
+    public Object addFq(@Valid AddQuestionnaireRequest addFqRequest){
         //System.out.println(addFqRequest.getTitle());
         //String content= JSON.toJSONString(addFqRequest.getContent());
         //System.out.println("controller:"+content);

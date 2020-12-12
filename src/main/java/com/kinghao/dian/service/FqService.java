@@ -1,7 +1,6 @@
 package com.kinghao.dian.service;
 
-import com.kinghao.dian.dto.request.AddFqRequest;
-import com.kinghao.dian.entity.FoundQuestionnaire;
+import com.kinghao.dian.dto.request.AddQuestionnaireRequest;
 
 /**
  * @Author Kinghao
@@ -9,7 +8,7 @@ import com.kinghao.dian.entity.FoundQuestionnaire;
  * @Version 1.0
  */
 public interface FqService {
-    void addFq(AddFqRequest addFqRequest);
+    void addFq(AddQuestionnaireRequest addFqRequest);
 
-    AddFqRequest queryFqById(Integer fqId);
+    AddQuestionnaireRequest queryFqById(Integer fqId);
 }
