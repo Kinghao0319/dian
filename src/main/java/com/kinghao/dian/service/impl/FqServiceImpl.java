@@ -2,14 +2,13 @@ package com.kinghao.dian.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.kinghao.dian.dto.request.AddFqRequest;
-import com.kinghao.dian.entity.FoundQuestionnaire;
+import com.kinghao.dian.dto.request.AddQuestionnaireRequest;
+import com.kinghao.dian.entity.Questionnaire;
 import com.kinghao.dian.entity.Question;
 import com.kinghao.dian.mapper.FqMapper;
 import com.kinghao.dian.service.FqService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -27,11 +26,11 @@ public class FqServiceImpl implements FqService {
     private FqMapper fqMapper;
 
     @Override
-    public void addFq(AddFqRequest addFqRequest) {
+    public void addFq(AddQuestionnaireRequest addFqRequest) {
 
-        String content= JSON.toJSONString(addFqRequest.getContent());
+        List content= addFqRequest.getContent();
         //System.out.println(content);
-        FoundQuestionnaire foundQuestionnaire=FoundQuestionnaire
+        Questionnaire questionnaire= Questionnaire
                 .builder()
                 .title(addFqRequest.getTitle())
                 .description(addFqRequest.getDescription())
@@ -46,18 +45,18 @@ public class FqServiceImpl implements FqService {
                 .founder_id(addFqRequest.getFounder_id())
                 .is_from_template(addFqRequest.getIs_from_template())
                 .build();
-        fqMapper.insertSelective(foundQuestionnaire);
+        fqMapper.insertSelective(questionnaire);
     }
 
     @Override
-    public AddFqRequest queryFqById(Integer fqId) {
+    public AddQuestionnaireRequest queryFqById(Integer fqId) {
 //        Example example=new Example(FoundQuestionnaire.class);
 //        Example.Criteria criteria=example.createCriteria();
 //        criteria.andEqualTo("id",fqId);
-        FoundQuestionnaire rt=fqMapper.selectByPrimaryKey(fqId);
-        List<Question> content= JSONArray.parseArray(rt.getContent()).toJavaList(Question.class);
+        Questionnaire rt=fqMapper.selectByPrimaryKey(fqId);
+        List<Question> content= rt.getContent();
         System.out.println(rt.getStartTime());
-        AddFqRequest res=AddFqRequest
+        AddQuestionnaireRequest res= AddQuestionnaireRequest
                 .builder()
                 .title(rt.getTitle())
                 .description(rt.getDescription())

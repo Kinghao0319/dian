@@ -1,62 +1,74 @@
 package com.kinghao.dian.entity;
-
-import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import tk.mybatis.mapper.annotation.NameStyle;
+import tk.mybatis.mapper.code.Style;
 
-import javax.validation.constraints.NotNull;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-/**
- * @Author Kinghao
- * @Date 2020/11/6 15:56
- * @Version 1.0
- */
+import javax.persistence.Table;
+import java.util.Date;
+import java.util.Map;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@NameStyle(Style.normal)
+@Table(name = "answer_question")
 public class Question {
-    @ApiModelProperty(value = "所属问卷id",required = true)
-    @NotNull
-    private Integer fq_id;
-
-    @ApiModelProperty(value = "所属问卷标题")
-    private String fq_title;
-
-    @ApiModelProperty(value = "题号")
+    @Id
+    private Integer Id;
+    private Integer answer_user_id;
+    private String type;
+    private String title;
     private Integer question_id;
-
-    @ApiModelProperty(value = "选项",example = "")
-    private List<String> choices;
-
-    @ApiModelProperty(value = "是否为单选",example = "")
-    private Boolean isSingle;
-
-    @ApiModelProperty(value = "矩阵多选")
-    private String[][] matrix;
-
-    @ApiModelProperty(value = "问题字数")
-    private Integer words;
-
-    @ApiModelProperty(value = "问题难度")
-    private String difficulty;
-
-    @ApiModelProperty(value = "标准答案")
-    private String standard_answer;
-
-    @ApiModelProperty(value = "是否必做",example = "")
-    private Boolean must_answered;
-
-    @ApiModelProperty(value = "是否fool",example = "")
-    private Boolean is_fool;
-
-    @ApiModelProperty(value = "有没有派生问题",example = "")
-    private Boolean deriving;
-
-    @ApiModelProperty(value = "是否是派生问题",example = "")
-    private Boolean derived;
+    //    private String[] content;
+    private Integer numOfWords;
+    private Integer difficulty;
+    //    private String standard_answer;
+    private String questionnnaire_id;
+    private String questionnnaire_title;
+    private boolean mustAnswered;
+    private boolean isfool;
+    private boolean isDerived;
+    private String content;
+    private String answer;
 
 }
+//
+//class SingleChoice extends Question {
+//    private String content[];
+//    private String answer;
+//}
+//
+//class MultipleChoice extends Question {
+//    private String content;
+//    private String[] answer;
+//
+//}
+//
+//class ShortAnswers extends Question {
+//    private String content;
+//    private String answer;
+//}
+//
+////排序题
+//class SortQuestion extends Question{
+//    //存储问题和对应的排序比如，choice1-》2
+//    private String content;
+//    private Map<String, Integer> answer;
+//}
+//
+////
+//class MatrixMultipleChoice extends Question{
+//    //key 为矩阵多选的横纵坐标，value是是否选择
+//    private Map<String[][], Boolean> answer;
+//}
+//
+//
+//

@@ -1,6 +1,6 @@
 package com.kinghao.dian.service.impl;
 
-import com.kinghao.dian.dto.request.AddFqRequest;
+import com.kinghao.dian.dto.request.AddQuestionnaireRequest;
 import com.kinghao.dian.entity.Testfq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -18,7 +18,7 @@ public class TestMongodbService {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public void test(AddFqRequest addFqRequest){
+    public void test(AddQuestionnaireRequest addFqRequest){
         System.out.println("in test 111");
         Testfq testfq = Testfq
                 .builder()

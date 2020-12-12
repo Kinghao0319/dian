@@ -8,7 +8,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import tk.mybatis.mapper.annotation.NameStyle;
+import tk.mybatis.mapper.code.Style;
 
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -24,7 +28,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AddFqRequest implements BaseRequest {
+public class AddQuestionnaireRequest implements BaseRequest {
     @ApiModelProperty(value = "问卷标题",required = true)
     @NotNull
     private String title;
@@ -59,4 +63,10 @@ public class AddFqRequest implements BaseRequest {
     private Integer founder_id;
     @ApiModelProperty(value = "是否来自模板")
     private Integer is_from_template;
+
+
+
+
+
+
 }
