@@ -11,6 +11,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -26,11 +27,11 @@ import java.util.Date;
 @NameStyle(Style.normal)
 @Table(name = "found_questionnaire")
 public class FoundQuestionnaire {
-    @Id
-    private Integer id;
+//    @Id
+//    private Integer id;
     private String title;
     private String description;
-    private String content;
+    private List<Question> content;
     private String targetGroup;
     private String type;
     private Date startTime;

@@ -47,7 +47,7 @@ public class QuestionController {
         MongoCollection<Document> collection=db.getCollection("question");
 
         collection.insertOne(BsonUtil.toDocument(question));
-        System.out.println("019");
+        //System.out.println("019");
         return "Add successfully!";
     }
 }
