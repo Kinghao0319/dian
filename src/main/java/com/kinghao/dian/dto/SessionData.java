@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class SessionData {
 
-    private Integer id;
+    private String id;
     private String tel;
     private String username;
 
