@@ -2,12 +2,20 @@ package com.kinghao.dian.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.kinghao.dian.dto.request.AddQuestionnaireRequest;
+import com.kinghao.dian.controller.QuestionnaireController;
+import com.kinghao.dian.dto.request.*;
 import com.kinghao.dian.entity.Questionnaire;
 import com.kinghao.dian.entity.Question;
 import com.kinghao.dian.mapper.FqMapper;
-import com.kinghao.dian.service.FqService;
+
+import com.kinghao.dian.service.QuestionnaireService;
+import com.kinghao.dian.util.MongoUtil;
+import com.mongodb.DBObject;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import lombok.extern.slf4j.Slf4j;
+import org.bson.Document;
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,57 +28,64 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class FqServiceImpl implements FqService {
+public class FqServiceImpl implements QuestionnaireService {
 
     @Resource(type = FqMapper.class)
     private FqMapper fqMapper;
+    String dbName = "Project";
+    String collName = "questionnaire";
+    MongoDatabase mongoDatabase = MongoUtil.instance.getDB("Project");
+//    private MongoCollection<Document> coll = MongoUtil.instance.getCollection(dbName, collName);;
 
     @Override
-    public void addFq(AddQuestionnaireRequest addFqRequest) {
+    public void addQuestionnaire(AddQuestionnaireRequest addQuestionnaireRequest) {
 
-        List content= addFqRequest.getContent();
+
         //System.out.println(content);
         Questionnaire questionnaire= Questionnaire
                 .builder()
-                .title(addFqRequest.getTitle())
-                .description(addFqRequest.getDescription())
-                .content(content)
-                .targetGroup(addFqRequest.getTargetGroup())
-                .type(addFqRequest.getType())
-                .startTime(addFqRequest.getStartTime())
-                .endTime(addFqRequest.getEndTime())
-                .difficulty(addFqRequest.getDifficulty())
-                .foundPoint(addFqRequest.getFoundPoint())
-                .answerPoint(addFqRequest.getAnswerPoint())
-                .founder_id(addFqRequest.getFounder_id())
-                .is_from_template(addFqRequest.getIs_from_template())
+                .title(addQuestionnaireRequest.getTitle())
+                .description(addQuestionnaireRequest.getDescription())
+                .content(addQuestionnaireRequest.getContent())
+                .targetGroup(addQuestionnaireRequest.getTargetGroup())
+                .type(addQuestionnaireRequest.getType())
+                .startTime(addQuestionnaireRequest.getStartTime())
+                .endTime(addQuestionnaireRequest.getEndTime())
+                .difficulty(addQuestionnaireRequest.getDifficulty())
+                .foundPoint(addQuestionnaireRequest.getFoundPoint())
+                .answerPoint(addQuestionnaireRequest.getAnswerPoint())
+                .founder_id(addQuestionnaireRequest.getFounder_id())
+                .is_from_template(addQuestionnaireRequest.getIs_from_template())
                 .build();
-        fqMapper.insertSelective(questionnaire);
+        MongoUtil.instance.insert(mongoDatabase,dbName, (DBObject) questionnaire);
+
     }
 
     @Override
-    public AddQuestionnaireRequest queryFqById(Integer fqId) {
-//        Example example=new Example(FoundQuestionnaire.class);
-//        Example.Criteria criteria=example.createCriteria();
-//        criteria.andEqualTo("id",fqId);
-        Questionnaire rt=fqMapper.selectByPrimaryKey(fqId);
-        List<Question> content= rt.getContent();
-        System.out.println(rt.getStartTime());
-        AddQuestionnaireRequest res= AddQuestionnaireRequest
-                .builder()
-                .title(rt.getTitle())
-                .description(rt.getDescription())
-                .answerPoint(rt.getAnswerPoint())
-                .foundPoint(rt.getFoundPoint())
-                .founder_id(rt.getFounder_id())
-                .content(content)
-                .difficulty(rt.getDifficulty())
-                .startTime(rt.getStartTime())
-                .endTime(rt.getEndTime())
-                .is_from_template(rt.getIs_from_template())
-                .type(rt.getType())
-                .targetGroup(rt.getTargetGroup())
-                .build();
-        return res;
+    public void queryFqById(ObjectId Id) {
+
     }
+
+    @Override
+    public void deleteById(DeleteQuestionnaireByIdRequest deleteQuestionnaireByIdRequest) {
+        MongoUtil.instance.deleteById(MongoUtil.instance.getCollection(dbName,"questionnaire"),deleteQuestionnaireByIdRequest.getId());
+    }
+
+    @Override
+    public void deleteByTitle(DeleteQuestionnaireByIdRequest deleteQuestionnaireByIdRequest) {
+
+    }
+
+    @Override
+    public SelectQuestionnaireByIdRequest selectById(ObjectId Id) {
+        return null;
+    }
+
+    @Override
+    public SelectQuestionnaireByTitleRequest selectByTitle(ObjectId Id) {
+        return null;
+    }
+
+
+
 }

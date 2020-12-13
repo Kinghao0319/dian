@@ -28,10 +28,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DeleteQuestionnaireByTitleRequest implements BaseRequest {
+
+public class SelectQuestionnaireByTitleRequest implements BaseRequest {
     @ApiModelProperty(value = "问卷标题",required = true)
     @NotNull
     private String title;
-
-
 }

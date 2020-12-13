@@ -3,6 +3,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
 import tk.mybatis.mapper.annotation.NameStyle;
 import tk.mybatis.mapper.code.Style;
 
@@ -20,27 +23,30 @@ import java.util.Map;
 @Builder
 @NameStyle(Style.normal)
 @Table(name = "answer_question")
+@Document(collection="question")
 public class Question {
     @Id
-    private Integer Id;
-    private Integer answer_user_id;
+    private String Id;
     private String type;
     private String title;
-    private Integer question_id;
+    private Integer sortId=0;
+//    private Integer question_id;
     //    private String[] content;
-    private Integer numOfWords;
-    private Integer difficulty;
+//    private Integer numOfWords;
+//    private Integer difficulty;
     //    private String standard_answer;
     private String questionnnaire_id;
     private String questionnnaire_title;
-    private boolean mustAnswered;
-    private boolean isfool;
-    private boolean isDerived;
-    private String content;
+//    private boolean mustAnswered;
+//    private boolean isfool;
+//    private boolean isDerived;
+//    private String content;
+//    private String answer;
+    private String[] content;
     private String answer;
 
 }
-//
+////
 //class SingleChoice extends Question {
 //    private String content[];
 //    private String answer;

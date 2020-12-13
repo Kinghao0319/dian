@@ -18,9 +18,9 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DeleteQuestionnaireByIdRequest implements BaseRequest {
+
+public class SelectQuestionnaireByIdRequest {
     @ApiModelProperty(value = "问卷id",required = true)
     @NotNull
     private String id;
-
 }

@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 import tk.mybatis.mapper.annotation.NameStyle;
 import tk.mybatis.mapper.code.Style;
@@ -29,9 +32,10 @@ import java.util.List;
 @Builder
 @NameStyle(Style.normal)
 @Table(name = "found_questionnaire")
+@Document(collection="questionnaire")
 public class Questionnaire {
     @Id
-    private Integer id;
+    private String id;
     private String title;
     private String description;
     private String targetGroup;
@@ -44,6 +48,5 @@ public class Questionnaire {
     private Integer founder_id;
     private Integer is_from_template;
     private List<Question> content;
-
 
 }

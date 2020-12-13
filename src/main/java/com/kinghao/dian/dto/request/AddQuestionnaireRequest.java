@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.format.annotation.DateTimeFormat;
 import tk.mybatis.mapper.annotation.NameStyle;
 import tk.mybatis.mapper.code.Style;
@@ -19,8 +20,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @Author Kinghao
- * @Date 2020/11/6 14:56
+ * @Author Esther
+ * @Date 2020/12/12 14:56
  * @Version 1.0
  */
 
@@ -38,7 +39,8 @@ public class AddQuestionnaireRequest implements BaseRequest {
 
     @ApiModelProperty(value = "问卷内容")
     private List<Question> content;
-
+    @ApiModelProperty(value = "问卷回答")
+    private String answer;
     @ApiModelProperty(value = "面向人群")
     private String targetGroup;
 
@@ -63,10 +65,5 @@ public class AddQuestionnaireRequest implements BaseRequest {
     private Integer founder_id;
     @ApiModelProperty(value = "是否来自模板")
     private Integer is_from_template;
-
-
-
-
-
 
 }
